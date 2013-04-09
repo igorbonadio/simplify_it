@@ -11,5 +11,10 @@ module SimplifyIt
       number = Negative.new(Negative.new(3))
       number.eval.should be == 3
     end
+
+    it "should set an expression to negative" do
+      expression = Negative.new(Addition.new(1, 2, 3, 4))
+      expression.eval.should be == -10
+    end
   end
 end
