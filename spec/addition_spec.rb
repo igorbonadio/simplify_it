@@ -11,5 +11,10 @@ module SimplifyIt
       addition = Addition.new(Negative.new(1), Negative.new(2), Negative.new(3), Negative.new(4))
       addition.eval.should be == -10
     end
+
+    it "should add negative and positive numbers" do
+      addition = Addition.new(1, Negative.new(2), Negative.new(3), 4)
+      addition.eval.should be == 0
+    end
   end
 end
