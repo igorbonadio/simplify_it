@@ -23,7 +23,8 @@ module SimplifyIt
     end
 
     it "should have a string representation" do
-      Negative.new(3).to_s.should be == "(-3)"
+      Negative.new(3).to_s.should eq "(-3)"
+      Negative.new(Negative.new(3)).to_s.should eq "(-(-3))"
     end
   end
 end
