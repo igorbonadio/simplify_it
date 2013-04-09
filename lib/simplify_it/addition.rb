@@ -9,7 +9,7 @@ module SimplifyIt
     end
 
     def to_s
-      @expressions.reduce("") { |memo, i| memo + i.to_s + "+" }[0..-2]
+      "(" + @expressions.reduce("") { |memo, i| memo + i.to_s + "+" }[0..-2] + ")"
     end
   end
 end
