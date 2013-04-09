@@ -11,6 +11,10 @@ module SimplifyIt
     def eval
       @expression.eval.to_negative
     end
+
+    def to_s
+      "(-" + @expression.eval.to_s + ")"
+    end
   end
 end
 

@@ -21,5 +21,9 @@ module SimplifyIt
       expression = Negative.new(Addition.new(1, Negative.new(2), 3, 4))
       expression.eval.should be == -6
     end
+
+    it "should have a string representation" do
+      Negative.new(3).to_s.should be == "(-3)"
+    end
   end
 end
