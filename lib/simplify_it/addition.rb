@@ -5,7 +5,7 @@ module SimplifyIt
     end
 
     def eval
-      @expressions.reduce(0) { |memo, i| memo + i}
+      @expressions.reduce(0) { |memo, i| memo + i.eval}
     end
   end
 end
