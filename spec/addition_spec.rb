@@ -24,6 +24,8 @@ module SimplifyIt
 
     it "should simplify expressions" do
       Addition.new(1,2,3,4).simplify.to_s.should eq "10"
+      Addition.new(1,2,-3,4).simplify.to_s.should eq "4"
+      Addition.new(-1,-2,-3,-4).simplify.to_s.should eq "-10"
     end
   end
 end
