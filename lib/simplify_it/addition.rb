@@ -17,7 +17,7 @@ module SimplifyIt
     end
 
     def simplify_expressions
-      Addition.new(*@expressions.map { |expr| expr.simplify })
+      Addition.new(*@expressions.map { |expr| expr.to_positive }.flatten)
     end
 
     def can_simplify?
@@ -32,6 +32,10 @@ module SimplifyIt
 
     def to_negative
       Addition.new(*@expressions.map{ |i| Negative.new(i) })
+    end
+
+    def to_positive
+      @expressions
     end
 
     def to_s

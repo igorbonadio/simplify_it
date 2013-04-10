@@ -20,6 +20,10 @@ module SimplifyIt
       Positive.new(@expression)
     end
 
+    def to_positive
+      @expression.to_negative
+    end
+
     def to_s
       "(-#{str(@expression)})"
     end
@@ -42,6 +46,10 @@ class Fixnum
 
   def to_negative
     -1 * self
+  end
+
+  def to_positive
+    self
   end
 
   def simplified?
