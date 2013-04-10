@@ -26,4 +26,13 @@ class Fixnum
   def eval
     self
   end
+
+  alias_method :old_to_s, :to_s
+  def to_s
+    if self >= 0
+      self.old_to_s
+    else
+      "(" + self.old_to_s + ")"
+    end
+  end
 end
