@@ -9,7 +9,25 @@ module SimplifyIt
     end
 
     def simplify
-      eval
+      if can_simplify?
+        eval
+      else
+        simplify_expressions
+      end
+    end
+
+    def simplify_expressions
+      Addition.new(*@expressions.map { |expr| expr.simplify })
+    end
+
+    def can_simplify?
+      @expressions.each do |expr|
+        return false unless expr.simplified?
+      end
+    end
+
+    def simplified?
+      false
     end
 
     def to_negative

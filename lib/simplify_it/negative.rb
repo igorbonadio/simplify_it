@@ -12,6 +12,10 @@ module SimplifyIt
       @expression.to_negative
     end
 
+    def simplified?
+      false
+    end
+
     def to_negative
       Positive.new(@expression)
     end
@@ -38,5 +42,13 @@ class Fixnum
 
   def to_negative
     -1 * self
+  end
+
+  def simplified?
+    true
+  end
+
+  def simplify
+    self
   end
 end
