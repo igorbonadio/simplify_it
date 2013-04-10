@@ -16,6 +16,7 @@ module SimplifyIt
 
     it "should have a string representation" do
       Addition.new(1,2,3,4).to_s.should eq "(1+2+3+4)"
+      Addition.new(1,2,-3,4).to_s.should eq "(1+2-3+4)"
       Addition.new(Negative.new(1), Negative.new(2), Negative.new(3), Negative.new(4)).to_s.should eq "((-1)+(-2)+(-3)+(-4))"
       Addition.new(1, Negative.new(2), Negative.new(3), 4).to_s.should eq "(1+(-2)+(-3)+4)"
     end
