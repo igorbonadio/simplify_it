@@ -32,6 +32,8 @@ module SimplifyIt
     it "should simplify an expression" do
       Negative.new(3).simplify.to_s.should eq "-3"
       Negative.new(-3).simplify.to_s.should eq "3"
+      Negative.new(Negative.new(3)).simplify.to_s.should eq "(+3)"
+      Negative.new(Negative.new(Negative.new(3))).simplify.to_s.should eq "(+(-3))"
     end
   end
 end

@@ -12,6 +12,10 @@ module SimplifyIt
       @expression.to_negative
     end
 
+    def to_negative
+      Positive.new(@expression)
+    end
+
     def to_s
       "(-#{str(@expression)})"
     end
