@@ -17,7 +17,15 @@ module SimplifyIt
     end
 
     def simplify_expressions
-      Addition.new(*@expressions.map { |expr| expr.to_positive }.flatten)
+      simplify_it = true
+      Addition.new(*@expressions.map do |expr| 
+        if simplify_it and not expr.simplified?
+          simplify_it = false
+          expr.to_positive 
+        else
+          expr
+        end
+      end.flatten)
     end
 
     def can_simplify?
