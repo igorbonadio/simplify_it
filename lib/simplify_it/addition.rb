@@ -8,6 +8,10 @@ module SimplifyIt
       @expressions.reduce(0) { |memo, i| memo + i.eval }
     end
 
+    def simplify
+      eval
+    end
+
     def to_negative
       Addition.new(*@expressions.map{ |i| Negative.new(i) })
     end
