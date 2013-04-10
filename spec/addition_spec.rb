@@ -22,6 +22,7 @@ module SimplifyIt
       Addition.new(1, Negative.new(2), Negative.new(3), 4).to_s.should eq "(1+(-2)+(-3)+4)"
       Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, 4).to_s.should eq "(1+2+(1+2+3+4)+3+4)"
       Addition.new(1, 2, Addition.new(1, 2, Negative.new(3), 4), 3, 4).to_s.should eq "(1+2+(1+2+(-3)+4)+3+4)"
+      Addition.new(1,2,Positive.new(3),4).to_s.should eq "(1+2+(+3)+4)"
     end
 
     it "should simplify expressions" do
@@ -33,6 +34,10 @@ module SimplifyIt
     it "should simplify negative expressions" do
       Addition.new(Negative.new(1), Negative.new(2), Negative.new(3), Negative.new(4)).simplify.to_s.should eq "(-1-2-3-4)"
       Addition.new(1, Negative.new(2), Negative.new(3), 4).simplify.to_s.should eq "(1-2-3+4)"
+    end
+
+    it "should simplify positive expressions" do
+      Addition.new(1,2,Positive.new(3),4).simplify.to_s.should eq "(1+2+3+4)"
     end
 
     it "should simplify additions of additions" do

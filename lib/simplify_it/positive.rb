@@ -8,6 +8,18 @@ module SimplifyIt
       @expression.eval
     end
 
+    def simplify
+      @expression
+    end
+
+    def simplified?
+      false
+    end
+
+    def to_positive
+      @expression
+    end
+
     def to_s
       "(+#{str(@expression)})"
     end

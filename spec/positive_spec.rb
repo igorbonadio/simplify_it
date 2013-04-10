@@ -21,5 +21,14 @@ module SimplifyIt
       Positive.new(Negative.new(Addition.new(1, 2, 3, 4))).to_s.should eq "(+(-(1+2+3+4)))"
       Positive.new(Addition.new(1,2,3,4)).to_s.should eq "(+(1+2+3+4))"
     end
+
+    it "should simplify expressions" do
+      Positive.new(3).simplify.to_s.should be == "3"
+      Positive.new(-3).simplify.to_s.should be == "-3"
+      Positive.new(Negative.new(3)).simplify.to_s.should eq "(-3)"
+      Positive.new(Negative.new(Negative.new(3))).simplify.to_s.should eq "(-(-3))"
+      Positive.new(Negative.new(Addition.new(1, 2, 3, 4))).simplify.to_s.should eq "(-(1+2+3+4))"
+      Positive.new(Addition.new(1,2,3,4)).simplify.to_s.should eq "(1+2+3+4)"
+    end
   end
 end
