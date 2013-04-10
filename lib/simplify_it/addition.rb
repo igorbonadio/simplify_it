@@ -9,7 +9,11 @@ module SimplifyIt
     end
 
     def to_s
-      "(#{@expressions.reduce("") { |memo, i| memo + str(i) }[1..-1]})"
+      expr = @expressions.reduce("") { |memo, i| memo + str(i) }
+      if expr[0] == "+"
+        expr = expr[1..-1]
+      end
+      "(#{expr})"
     end
 
     def str(expression)
