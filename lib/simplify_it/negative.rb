@@ -8,6 +8,10 @@ module SimplifyIt
       -1 * @expression.eval
     end
 
+    def simplify
+      @expression.to_negative
+    end
+
     def to_s
       "(-#{str(@expression)})"
     end
@@ -26,5 +30,9 @@ end
 class Fixnum
   def eval
     self
+  end
+
+  def to_negative
+    -1 * self
   end
 end
