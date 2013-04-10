@@ -4,12 +4,8 @@ module SimplifyIt
       @expression = expression
     end
 
-    def to_negative
-      @expression.eval.to_negative
-    end
-
     def eval
-      @expression.eval.to_negative
+      -1 * @expression.eval
     end
 
     def to_s
@@ -28,10 +24,6 @@ module SimplifyIt
 end
 
 class Fixnum
-  def to_negative
-    -1 * self
-  end
-
   def eval
     self
   end
