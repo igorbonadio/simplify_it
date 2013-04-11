@@ -28,6 +28,10 @@ module SimplifyIt
       @expression
     end
 
+    def to_negative
+      Negative.new(@expression)
+    end
+
     def to_s
       "(+#{str(@expression)})"
     end
@@ -39,6 +43,10 @@ module SimplifyIt
       else
         expr
       end
+    end
+
+    def endpoint?
+      @expression.instance_of? Fixnum
     end
 
     def <(num)
