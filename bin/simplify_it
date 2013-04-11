@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+
+require 'simplify_it'
+
+module SimplifyIt
+  expr = Negative.new(
+    Addition.new(
+      Negative.new(
+        Addition.new(
+          Negative.new(
+            Positive.new(-10)
+          ), 
+          1, Addition.new(1,3,Positive.new(4),6), -3, 
+          Negative.new(
+            Negative.new(10)
+          )
+        )
+      ),
+    1,2,Negative.new(Positive.new(Addition.new(1,2,3))),4)
+  )
+
+  while true
+    puts expr
+    gets
+    expr = expr.next_step
+  end
+
+end
