@@ -8,14 +8,6 @@ module SimplifyIt
       @expressions.reduce(0) { |memo, i| memo + i.eval }
     end
 
-    def simplify
-      if can_simplify?
-        eval
-      else
-        simplify_expressions
-      end
-    end
-
     def simplify_expressions
       simplify_it = true
       Addition.new(*@expressions.map do |expr| 
