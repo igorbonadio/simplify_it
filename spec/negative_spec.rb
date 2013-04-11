@@ -40,5 +40,10 @@ module SimplifyIt
       Negative.new(Addition.new(1, 2, 3, 4)).simplify.to_s.should eq "((-1)+(-2)+(-3)+(-4))"
       Negative.new(Addition.new(1, Negative.new(2), Negative.new(3), 4)).simplify.to_s.should eq "((-1)+(-(-2))+(-(-3))+(-4))"
     end
+
+    it "should show the next step of a solution" do
+      Negative.new(3).next_step.to_s.should be == "-3"
+      Negative.new(-3).next_step.to_s.should be == "3"
+    end
   end
 end

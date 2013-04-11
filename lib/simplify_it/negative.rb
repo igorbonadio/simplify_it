@@ -4,6 +4,10 @@ module SimplifyIt
       @expression = expression
     end
 
+    def next_step
+      simplify
+    end
+
     def eval
       -1 * @expression.eval
     end
