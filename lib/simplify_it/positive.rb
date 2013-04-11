@@ -32,5 +32,9 @@ module SimplifyIt
         expr
       end
     end
+
+    def <(num)
+      false
+    end
   end
 end

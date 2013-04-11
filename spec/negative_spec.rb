@@ -44,6 +44,8 @@ module SimplifyIt
     it "should show the next step of a solution" do
       Negative.new(3).next_step.to_s.should be == "-3"
       Negative.new(-3).next_step.to_s.should be == "3"
+      Negative.new(Negative.new(3)).next_step.to_s.should eq "(+3)"
+      Negative.new(Negative.new(Negative.new(3))).next_step.to_s.should eq "(-(+3))"
     end
   end
 end

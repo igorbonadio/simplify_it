@@ -8,7 +8,11 @@ module SimplifyIt
     end
 
     def next_step
-      simplify
+      if @expression.endpoint?
+        simplify
+      else
+        Negative.new(@expression.simplify)
+      end
     end
 
     def eval
@@ -21,6 +25,10 @@ module SimplifyIt
 
     def simplified?
       false
+    end
+
+    def endpoint?
+      @expression.instance_of? Fixnum
     end
 
     def to_negative
@@ -69,5 +77,9 @@ class Fixnum
 
   def simplify
     self
+  end
+
+  def endpoint?
+    true
   end
 end
