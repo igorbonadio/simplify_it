@@ -1,6 +1,9 @@
 module SimplifyIt
   class Negative
     def initialize(expression)
+      if expression < 0
+        Negative.new(expression.to_negative)
+      end
       @expression = expression
     end
 
@@ -39,6 +42,10 @@ module SimplifyIt
       else
         expr
       end
+    end
+
+    def <(num)
+      false
     end
   end
 end
