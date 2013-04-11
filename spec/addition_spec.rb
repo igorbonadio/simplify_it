@@ -48,5 +48,30 @@ module SimplifyIt
     it "should simplify only one sub expression" do
       Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, Addition.new(1, 2, 3, 4)).simplify.to_s.should eq "(1+2+1+2+3+4+3+(1+2+3+4))"
     end
+
+    it "should show the next step of expressions" do
+      Addition.new(1,2,3,4).next_step.to_s.should eq "10"
+      Addition.new(1,2,-3,4).next_step.to_s.should eq "4"
+      Addition.new(-1,-2,-3,-4).next_step.to_s.should eq "-10"
+    end
+
+
+    it "should show the next step of negative expressions" do
+      Addition.new(Negative.new(1), Negative.new(2), Negative.new(3), Negative.new(4)).next_step.to_s.should eq "(-1+(-2)+(-3)+(-4))"
+      Addition.new(1, Negative.new(2), Negative.new(3), 4).next_step.to_s.should eq "(1-2+(-3)+4)"
+    end
+
+    it "should show the next step of positive expressions" do
+      Addition.new(1,2,Positive.new(3),4).next_step.to_s.should eq "(1+2+3+4)"
+    end
+
+    it "should show the next step of additions of additions" do
+      Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, 4).next_step.to_s.should eq "(1+2+10+3+4)"
+      Addition.new(1, 2, Addition.new(1, 2, Negative.new(3), 4), 3, 4).next_step.to_s.should eq "(1+2+(1+2-3+4)+3+4)"
+    end
+
+    it "should show the next step of only one sub expression" do
+      Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, Addition.new(1, 2, 3, 4)).next_step.to_s.should eq "(1+2+10+3+(1+2+3+4))"
+    end
   end
 end

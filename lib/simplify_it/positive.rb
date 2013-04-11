@@ -8,6 +8,14 @@ module SimplifyIt
       @expression.eval
     end
 
+    def next_step
+      if @expression.endpoint?
+        simplify
+      else
+        Positive.new(@expression.next_step)
+      end
+    end
+
     def simplify
       @expression
     end
