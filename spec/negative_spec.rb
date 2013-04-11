@@ -27,6 +27,7 @@ module SimplifyIt
       Negative.new(-3).to_s.should eq "(-(-3))"
       Negative.new(Negative.new(3)).to_s.should eq "(-(-3))"
       Negative.new(Addition.new(1, 2, 3, 4)).to_s.should eq "(-(1+2+3+4))"
+      Negative.new(Addition.new(1, 2, Multiplication.new(3,4,5), 4)).to_s.should eq "(-(1+2+(3*4*5)+4))"
     end
 
     it "should simplify an expression" do

@@ -23,6 +23,7 @@ module SimplifyIt
       Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, 4).to_s.should eq "(1+2+(1+2+3+4)+3+4)"
       Addition.new(1, 2, Addition.new(1, 2, Negative.new(3), 4), 3, 4).to_s.should eq "(1+2+(1+2+(-3)+4)+3+4)"
       Addition.new(1,2,Positive.new(3),4).to_s.should eq "(1+2+(+3)+4)"
+      Addition.new(1,2,Positive.new(Multiplication.new(3,4,5)),4).to_s.should eq "(1+2+(+(3*4*5))+4)"
     end
 
     it "should simplify expressions" do
