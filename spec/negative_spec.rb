@@ -47,5 +47,12 @@ module SimplifyIt
       Negative.new(Negative.new(3)).next_step.to_s.should eq "(+3)"
       Negative.new(Negative.new(Negative.new(3))).next_step.to_s.should eq "(-(+3))"
     end
+
+    it "should show the next step of a solution of additions" do
+      Negative.new(Addition.new(1, 2, 3, 4)).next_step.to_s.should eq "(-10)"
+      Negative.new(Negative.new(Addition.new(1, 2, 3, 4))).next_step.to_s.should eq "(-(-10))"
+      Negative.new(Negative.new(Addition.new(1, 2, Negative.new(3), 4))).next_step.to_s.should eq "(-(-(1+2-3+4)))"
+      Negative.new(Negative.new(Addition.new(1, 2, Negative.new(Addition.new(1,2,3,4)), 4))).next_step.to_s.should eq "(-(-(1+2+(-10)+4)))"
+    end
   end
 end

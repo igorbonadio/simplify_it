@@ -11,7 +11,7 @@ module SimplifyIt
       if @expression.endpoint?
         simplify
       else
-        Negative.new(@expression.simplify)
+        Negative.new(@expression.next_step)
       end
     end
 

@@ -38,6 +38,26 @@ module SimplifyIt
       false
     end
 
+    def next_step
+      if can_simplify?
+        eval
+      else
+        next_step_expressions
+      end
+    end
+
+    def next_step_expressions
+      simplify_it = true
+      Addition.new(*@expressions.map do |expr| 
+        if simplify_it and not expr.simplified?
+          simplify_it = false
+          expr.next_step 
+        else
+          expr
+        end
+      end.flatten)
+    end
+
     def to_negative
       Addition.new(*@expressions.map{ |i| Negative.new(i) })
     end
@@ -64,6 +84,10 @@ module SimplifyIt
     end
 
     def <(num)
+      false
+    end
+
+    def endpoint?
       false
     end
   end
