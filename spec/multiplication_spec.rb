@@ -19,6 +19,10 @@ module SimplifyIt
     it "should have a string representation" do
       Multiplication.new(1,2,3).to_s.should be == "(1*2*3)"
       Multiplication.new(1,-2,3).to_s.should be == "(1*(-2)*3)"
+      Multiplication.new(1,Negative.new(2),3).to_s.should be == "(1*(-2)*3)"
+      Multiplication.new(1,Negative.new(Negative.new(2)),3).to_s.should be == "(1*(-(-2))*3)"
+      Multiplication.new(1,Addition.new(2,1,3),3).to_s.should be == "(1*(2+1+3)*3)"
+      Multiplication.new(1,Negative.new(Addition.new(2,1,3)),3).to_s.should be == "(1*(-(2+1+3))*3)"
     end
   end
 end
