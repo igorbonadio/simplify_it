@@ -42,14 +42,6 @@ module SimplifyIt
       end.flatten)
     end
 
-    def to_negative
-      Addition.new(*@expressions.map{ |i| Negative.new(i) })
-    end
-
-    def to_positive
-      @expressions
-    end
-
     def to_s
       expr = @expressions.reduce("") { |memo, i| memo + str(i) }
       if expr[0] == "+"

@@ -30,6 +30,8 @@ module SimplifyIt
       Multiplication.new(1,-2,3).next_step.to_s.should be == "((-2)*3)"
       Multiplication.new(1,Negative.new(2),3).next_step.to_s.should be == "((-2)*3)"
       Multiplication.new(1,Negative.new(Negative.new(2)),3).next_step.to_s.should be == "(1*(+2)*3)"
+      Multiplication.new(1,Addition.new(2,1,3),3).next_step.to_s.should be == "(1*(3+3)*3)"
+      Multiplication.new(1,Negative.new(Addition.new(2,1,3)),3).next_step.to_s.should be == "(1*(-(3+3))*3)"
     end
   end
 end
