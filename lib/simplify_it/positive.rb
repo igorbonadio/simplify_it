@@ -24,10 +24,6 @@ module SimplifyIt
       false
     end
 
-    def to_positive
-      @expression
-    end
-
     def to_negative
       Negative.new(@expression)
     end
