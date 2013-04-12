@@ -51,5 +51,10 @@ module SimplifyIt
     it "should show the next step of only one sub expression" do
       Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, Addition.new(1, 2, 3, 4)).next_step.to_s.should eq "(1+2+(3+3+4)+3+(1+2+3+4))"
     end
+
+    it "should show the next step of multiplications" do
+      Addition.new(Multiplication.new(1,2,3,4),2,3,4).next_step.to_s.should eq "((2*3*4)+2+3+4)"
+      Addition.new(1,Multiplication.new(1,2,3,4),3,4).next_step.to_s.should eq "(1+(2*3*4)+3+4)"
+    end
   end
 end
