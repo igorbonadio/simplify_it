@@ -38,10 +38,15 @@ module SimplifyIt
 
     def to_s
       div_str = @div.to_s
+      num_str = @num.to_s
       if div_str[0] == "-"
-        "(-#{@num.to_s}/#{div_str[1..-1]})"
+        if num_str[0] == "-"
+          "(#{num_str[1..-1]}/#{div_str[1..-1]})"
+        else
+          "(-#{num_str}/#{div_str[1..-1]})"
+        end
       else
-        "(#{@num.to_s}/#{div_str})"
+        "(#{num_str}/#{div_str})"
       end
     end
   end

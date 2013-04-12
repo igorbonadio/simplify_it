@@ -41,6 +41,9 @@ module SimplifyIt
       Division.new(-10,2).next_step.to_s.should be == "-5"
       Division.new(Negative.new(10),2).next_step.to_s.should be == "(-10/2)"
       Division.new(10,Negative.new(2)).next_step.to_s.should be == "(-10/2)"
+      Division.new(10,-2).next_step.to_s.should be == "-5"
+      Division.new(Negative.new(50),Negative.new(20)).next_step.to_s.should be == "(-50/(-20))"
+      Division.new(-50,Negative.new(20)).next_step.to_s.should be == "(50/20)"
     end
   end
 end
