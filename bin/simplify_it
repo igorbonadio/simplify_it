@@ -29,9 +29,13 @@ module SimplifyIt
   )
 
   while true
-    puts expr
-    gets
-    expr = expr.next_step
+    begin
+      puts expr
+      gets
+      expr = expr.next_step
+    rescue Exception => e
+      exit
+    end
   end
 
 end
