@@ -32,6 +32,10 @@ module SimplifyIt
       end.flatten)
     end
 
+    def simplified?
+      false
+    end
+
     def can_simplify?
       @expressions.each do |expr|
         return false unless expr.endpoint?

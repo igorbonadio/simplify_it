@@ -14,7 +14,14 @@ module SimplifyIt
           ), 
           1, Addition.new(1,3,Positive.new(4),6), -3, 
           Negative.new(
-            Negative.new(Multiplication.new(7,3,-4,Negative.new(2)))
+            Negative.new(Multiplication.new(
+              7,Addition.new(
+                1, Multiplication.new(
+                  -3,-4
+                ),3
+              ),-4,
+              Negative.new(2)
+            ))
           )
         )
       ),
