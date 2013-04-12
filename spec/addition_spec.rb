@@ -27,9 +27,9 @@ module SimplifyIt
     end
 
     it "should show the next step of expressions" do
-      Addition.new(1,2,3,4).next_step.to_s.should eq "10"
-      Addition.new(1,2,-3,4).next_step.to_s.should eq "4"
-      Addition.new(-1,-2,-3,-4).next_step.to_s.should eq "-10"
+      Addition.new(1,2,3,4).next_step.to_s.should eq "(3+3+4)"
+      Addition.new(1,2,-3,4).next_step.to_s.should eq "(3-3+4)"
+      Addition.new(-1,-2,-3,-4).next_step.to_s.should eq "(-3-3-4)"
     end
 
 
@@ -43,12 +43,12 @@ module SimplifyIt
     end
 
     it "should show the next step of additions of additions" do
-      Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, 4).next_step.to_s.should eq "(1+2+10+3+4)"
+      Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, 4).next_step.to_s.should eq "(1+2+(3+3+4)+3+4)"
       Addition.new(1, 2, Addition.new(1, 2, Negative.new(3), 4), 3, 4).next_step.to_s.should eq "(1+2+(1+2-3+4)+3+4)"
     end
 
     it "should show the next step of only one sub expression" do
-      Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, Addition.new(1, 2, 3, 4)).next_step.to_s.should eq "(1+2+10+3+(1+2+3+4))"
+      Addition.new(1, 2, Addition.new(1, 2, 3, 4), 3, Addition.new(1, 2, 3, 4)).next_step.to_s.should eq "(1+2+(3+3+4)+3+(1+2+3+4))"
     end
   end
 end

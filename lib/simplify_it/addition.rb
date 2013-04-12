@@ -32,7 +32,11 @@ module SimplifyIt
 
     def next_step
       if can_simplify?
-        eval
+        if @expressions.length > 2
+          Addition.new(*([@expressions[0].eval + @expressions[1].eval] + @expressions[2..-1]))
+        else
+          eval
+        end
       else
         next_step_expressions
       end

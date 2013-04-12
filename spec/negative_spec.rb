@@ -38,10 +38,10 @@ module SimplifyIt
     end
 
     it "should show the next step of a solution of addition" do
-      Negative.new(Addition.new(1, 2, 3, 4)).next_step.to_s.should eq "(-10)"
-      Negative.new(Negative.new(Addition.new(1, 2, 3, 4))).next_step.to_s.should eq "(-(-10))"
+      Negative.new(Addition.new(1, 2, 3, 4)).next_step.to_s.should eq "(-(3+3+4))"
+      Negative.new(Negative.new(Addition.new(1, 2, 3, 4))).next_step.to_s.should eq "(-(-(3+3+4)))"
       Negative.new(Negative.new(Addition.new(1, 2, Negative.new(3), 4))).next_step.to_s.should eq "(-(-(1+2-3+4)))"
-      Negative.new(Negative.new(Addition.new(1, 2, Negative.new(Addition.new(1,2,3,4)), 4))).next_step.to_s.should eq "(-(-(1+2+(-10)+4)))"
+      Negative.new(Negative.new(Addition.new(1, 2, Negative.new(Addition.new(1,2,3,4)), 4))).next_step.to_s.should eq "(-(-(1+2+(-(3+3+4))+4)))"
     end
 
     it "should show the next step of a positive expression" do

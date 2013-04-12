@@ -28,8 +28,8 @@ module SimplifyIt
       Positive.new(-3).next_step.to_s.should be == "-3"
       Positive.new(Negative.new(3)).next_step.to_s.should eq "(-3)"
       Positive.new(Negative.new(Negative.new(3))).next_step.to_s.should eq "(+(+3))"
-      Positive.new(Negative.new(Addition.new(1, 2, 3, 4))).next_step.to_s.should eq "(+(-10))"
-      Positive.new(Addition.new(1,2,3,4)).next_step.to_s.should eq "(+10)"
+      Positive.new(Negative.new(Addition.new(1, 2, 3, 4))).next_step.to_s.should eq "(+(-(3+3+4)))"
+      Positive.new(Addition.new(1,2,3,4)).next_step.to_s.should eq "(+(3+3+4))"
     end
   end
 end
