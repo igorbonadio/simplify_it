@@ -56,5 +56,7 @@ module SimplifyIt
       Addition.new(Multiplication.new(1,2,3,4),2,3,4).next_step.to_s.should eq "((2*3*4)+2+3+4)"
       Addition.new(1,Multiplication.new(1,2,3,4),3,4).next_step.to_s.should eq "(1+(2*3*4)+3+4)"
     end
+
+    it "should simplify sum of rationals step by step"
   end
 end

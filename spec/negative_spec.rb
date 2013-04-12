@@ -54,5 +54,7 @@ module SimplifyIt
       Negative.new(Multiplication.new(1,2,3)).next_step.to_s.should eq "(-(2*3))"
       Negative.new(Multiplication.new(1,Negative.new(2),3)).next_step.to_s.should eq "(-((-2)*3))"
     end
+
+    it "should set a rational to negative"
   end
 end
