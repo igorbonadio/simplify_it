@@ -5,6 +5,14 @@ module SimplifyIt
       @div = div
     end
 
+    def <(n)
+      false
+    end
+
+    def endpoint?
+      false
+    end
+
     def next_step
       if can_simplify?
         eval
@@ -49,5 +57,15 @@ module SimplifyIt
         "(#{num_str}/#{div_str})"
       end
     end
+  end
+end
+
+class Rational
+  def endpoint?
+    true
+  end
+
+  def to_negative
+    self * -1
   end
 end
