@@ -6,7 +6,7 @@ module SimplifyIt
     end
 
     def eval
-      Rational(@num, @div)
+      Rational(@num.eval, @div.eval)
     end
   end
 end
