@@ -44,6 +44,14 @@ module SimplifyIt
       "(#{expr[1..-1]})"
     end
 
+    def <(num)
+      false
+    end
+
+    def endpoint?
+      false
+    end
+
     def str(expression)
       expr = expression.to_s
       if expr[0] == '-'

@@ -66,4 +66,8 @@ class Fixnum
   def endpoint?
     true
   end
+
+  def next_step
+    raise Exception.new("It can not be simplified!")
+  end
 end
