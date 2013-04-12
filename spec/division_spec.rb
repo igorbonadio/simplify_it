@@ -12,5 +12,11 @@ module SimplifyIt
       Division.new(10,Negative.new(2)).eval.should be == Rational(-5)
       Division.new(Negative.new(50),Negative.new(20)).eval.should be == Rational(5,2)
     end
+
+    it "should add negative and positive numbers" do
+      Division.new(Negative.new(10),Positive.new(2)).eval.should be == Rational(-5)
+      Division.new(Positive.new(10),Negative.new(2)).eval.should be == Rational(-5)
+      Division.new(Positive.new(50),Positive.new(20)).eval.should be == Rational(5,2)
+    end
   end
 end
