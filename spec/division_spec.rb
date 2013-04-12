@@ -18,5 +18,15 @@ module SimplifyIt
       Division.new(Positive.new(10),Negative.new(2)).eval.should be == Rational(-5)
       Division.new(Positive.new(50),Positive.new(20)).eval.should be == Rational(5,2)
     end
+
+    it "should have a string representation" do
+      Division.new(10,2).to_s.should be == "(10/2)"
+      Division.new(-10,2).to_s.should be == "(-10/2)"
+      Division.new(Negative.new(10),2).to_s.should be == "((-10)/2)"
+      Division.new(10,Negative.new(2)).to_s.should be == "(10/(-2))"
+      Division.new(10,-2).to_s.should be == "(10/(-2))"
+      Division.new(Negative.new(50),Negative.new(20)).to_s.should be == "((-50)/(-20))"
+      Division.new(Negative.new(10),Positive.new(2)).to_s.should be == "((-10)/(+2))"
+    end
   end
 end
