@@ -5,20 +5,43 @@ module SimplifyIt
       @div = div
     end
 
+    def next_step
+      if can_simplify?
+        eval
+      else
+        next_step_expressions
+      end
+    end
+
+    def can_simplify?
+      @num.simplified? and @div.simplified?
+    end
+
+    def next_step_expressions
+      unless @num.simplified?
+        Division.new(@num.next_step, @div)
+      else
+        unless @div.simplified?
+          Division.new(@num, @div.next_step)
+        end
+      end
+    end
+
     def eval
-      Rational(@num.eval, @div.eval)
+      r = Rational(@num.eval, @div.eval)
+      if r == r.ceil
+        r.ceil
+      else
+        r
+      end
     end
 
     def to_s
-      "(#{@num.to_s}/#{div_to_s})"
-    end
-
-    def div_to_s
-      str = @div.to_s
-      if str[0] == '-'
-        "(#{str})"
+      div_str = @div.to_s
+      if div_str[0] == "-"
+        "(-#{@num.to_s}/#{div_str[1..-1]})"
       else
-        str
+        "(#{@num.to_s}/#{div_str})"
       end
     end
   end

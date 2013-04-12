@@ -29,11 +29,18 @@ module SimplifyIt
       Division.new(-10,2).to_s.should be == "(-10/2)"
       Division.new(Negative.new(10),2).to_s.should be == "((-10)/2)"
       Division.new(10,Negative.new(2)).to_s.should be == "(10/(-2))"
-      Division.new(10,-2).to_s.should be == "(10/(-2))"
+      Division.new(10,-2).to_s.should be == "(-10/2)"
       Division.new(Negative.new(50),Negative.new(20)).to_s.should be == "((-50)/(-20))"
       Division.new(Negative.new(10),Positive.new(2)).to_s.should be == "((-10)/(+2))"
       Division.new(Addition.new(1,2,3,4),2).to_s.should be == "((1+2+3+4)/2)"
       Division.new(10,Addition.new(Negative.new(1), Negative.new(1))).to_s.should be == "(10/((-1)+(-1)))"
+    end
+
+    it "should show the next step of simple divisions" do
+      Division.new(10,2).next_step.to_s.should be == "5"
+      Division.new(-10,2).next_step.to_s.should be == "-5"
+      Division.new(Negative.new(10),2).next_step.to_s.should be == "(-10/2)"
+      Division.new(10,Negative.new(2)).next_step.to_s.should be == "(-10/2)"
     end
   end
 end
