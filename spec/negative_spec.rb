@@ -28,6 +28,7 @@ module SimplifyIt
       Negative.new(Negative.new(3)).to_s.should eq "(-(-3))"
       Negative.new(Addition.new(1, 2, 3, 4)).to_s.should eq "(-(1+2+3+4))"
       Negative.new(Addition.new(1, 2, Multiplication.new(3,4,5), 4)).to_s.should eq "(-(1+2+(3*4*5)+4))"
+      Negative.new(Multiplication.new(1,2,3)).to_s.should eq "(-(1*2*3))"
     end
 
     it "should show the next step of a solution" do
@@ -47,6 +48,11 @@ module SimplifyIt
     it "should show the next step of a positive expression" do
       Negative.new(Positive.new(3)).next_step.to_s.should be == "(-3)"
       Negative.new(Positive.new(Negative.new(3))).next_step.to_s.should be == "(-(-3))"
+    end
+
+    it "should show the next step of a multiplication" do
+      Negative.new(Multiplication.new(1,2,3)).next_step.to_s.should eq "(-(2*3))"
+      Negative.new(Multiplication.new(1,Negative.new(2),3)).next_step.to_s.should eq "(-((-2)*3))"
     end
   end
 end
