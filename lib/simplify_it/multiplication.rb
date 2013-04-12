@@ -32,18 +32,6 @@ module SimplifyIt
       end.flatten)
     end
 
-    def simplify_expressions
-      simplify_it = true
-      Multiplication.new(*@expressions.map do |expr| 
-        if simplify_it and not expr.simplified?
-          simplify_it = false
-          expr.to_positive 
-        else
-          expr
-        end
-      end.flatten)
-    end
-
     def can_simplify?
       @expressions.each do |expr|
         return false unless expr.endpoint?
