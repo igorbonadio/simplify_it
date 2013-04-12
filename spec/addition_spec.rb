@@ -27,6 +27,7 @@ module SimplifyIt
     end
 
     it "should show the next step of expressions" do
+      Addition.new(1,2).next_step.to_s.should eq "3"
       Addition.new(1,2,3,4).next_step.to_s.should eq "(3+3+4)"
       Addition.new(1,2,-3,4).next_step.to_s.should eq "(3-3+4)"
       Addition.new(-1,-2,-3,-4).next_step.to_s.should eq "(-3-3-4)"
