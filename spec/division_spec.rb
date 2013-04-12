@@ -22,6 +22,9 @@ module SimplifyIt
     it "should divide complex expressions" do
       Division.new(Addition.new(1,2,3,4),2).eval.should be == Rational(5)
       Division.new(10,Addition.new(Negative.new(1), Negative.new(1))).eval.should be == Rational(-5)
+      Division.new(Division.new(10,2), 5).eval.should be == 1
+      Division.new(Division.new(10,2), Division.new(5, 1)).eval.should be == 1
+      Division.new(Division.new(5,2), 5).eval.should be == Rational(1,2)
     end
 
     it "should have a string representation" do
