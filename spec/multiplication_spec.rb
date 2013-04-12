@@ -27,6 +27,9 @@ module SimplifyIt
 
     it "should show the next step of a solution" do
       Multiplication.new(1,2,3).next_step.to_s.should be == "(2*3)"
+      Multiplication.new(1,-2,3).next_step.to_s.should be == "((-2)*3)"
+      Multiplication.new(1,Negative.new(2),3).next_step.to_s.should be == "((-2)*3)"
+      Multiplication.new(1,Negative.new(Negative.new(2)),3).next_step.to_s.should be == "(1*(+2)*3)"
     end
   end
 end

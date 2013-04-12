@@ -20,6 +20,18 @@ module SimplifyIt
       end
     end
 
+    def next_step_expressions
+      simplify_it = true
+      Multiplication.new(*@expressions.map do |expr| 
+        if simplify_it and not expr.simplified?
+          simplify_it = false
+          expr.next_step 
+        else
+          expr
+        end
+      end.flatten)
+    end
+
     def simplify_expressions
       simplify_it = true
       Multiplication.new(*@expressions.map do |expr| 
