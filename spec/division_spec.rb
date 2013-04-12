@@ -25,6 +25,8 @@ module SimplifyIt
       Division.new(Division.new(10,2), 5).eval.should be == 1
       Division.new(Division.new(10,2), Division.new(5, 1)).eval.should be == 1
       Division.new(Division.new(5,2), 5).eval.should be == Rational(1,2)
+      Division.new(Addition.new(1,2,3,Division.new(8,2)), 5).eval.should be == 2
+      Division.new(Addition.new(1,2,3,Division.new(10,20)), 5).eval.should be == Rational(13,10)
     end
 
     it "should have a string representation" do
