@@ -13,10 +13,15 @@ module SimplifyIt
       Division.new(Negative.new(50),Negative.new(20)).eval.should be == Rational(5,2)
     end
 
-    it "should add negative and positive numbers" do
+    it "should divide negative and positive numbers" do
       Division.new(Negative.new(10),Positive.new(2)).eval.should be == Rational(-5)
       Division.new(Positive.new(10),Negative.new(2)).eval.should be == Rational(-5)
       Division.new(Positive.new(50),Positive.new(20)).eval.should be == Rational(5,2)
+    end
+
+    it "should divide complex expressions" do
+      Division.new(Addition.new(1,2,3,4),2).eval.should be == Rational(5)
+      Division.new(10,Addition.new(Negative.new(1), Negative.new(1))).eval.should be == Rational(-5)
     end
 
     it "should have a string representation" do
