@@ -8,6 +8,18 @@ module SimplifyIt
       @expressions.reduce(1) { |memo, i| memo * i.eval }
     end
 
+    def next_step
+      if can_simplify?
+        if @expressions.length > 2
+          Multiplication.new(*([@expressions[0].eval * @expressions[1].eval] + @expressions[2..-1]))
+        else
+          eval
+        end
+      else
+        next_step_expressions
+      end
+    end
+
     def simplify_expressions
       simplify_it = true
       Multiplication.new(*@expressions.map do |expr| 
