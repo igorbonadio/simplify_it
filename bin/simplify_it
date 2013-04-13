@@ -20,7 +20,15 @@ module SimplifyIt
                   -3,-4
                 ),3
               ),-4,
-              Negative.new(2)
+              Negative.new(
+                Division.new(1,
+                             Addition.new(1,2,3,
+                                            Multiplication.new(
+                                              Division.new(7,2)
+                                            )
+                             )
+                )
+              )
             ))
           )
         )
