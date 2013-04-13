@@ -10,6 +10,10 @@ module SimplifyIt
     end
 
     def endpoint?
+      @num.instance_of? Fixnum and @div.instance_of? Fixnum
+    end
+
+    def simplified?
       false
     end
 
@@ -44,6 +48,10 @@ module SimplifyIt
       end
     end
 
+    def to_negative
+      Division.new(-1*@num, @div)
+    end
+
     def to_s
       div_str = @div.to_s
       num_str = @num.to_s
@@ -67,5 +75,10 @@ class Rational
 
   def to_negative
     self * -1
+  end
+
+  def mul(num)
+    SimplifyIt::Division.new(SimplifyIt::Multiplication.new(self.numerator, num.numerator), 
+                             SimplifyIt::Multiplication.new(self.denominator,num.denominator))
   end
 end

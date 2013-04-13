@@ -35,6 +35,12 @@ module SimplifyIt
       Multiplication.new(1,Negative.new(Addition.new(2,1,3)),3).next_step.to_s.should be == "(1*(-(3+3))*3)"
     end
 
-    it "should multiply rationals step by step"
+    it "should multiply rationals step by step" do
+      Multiplication.new(Division.new(3,2),Division.new(3,2)).to_s.should be == "((3/2)*(3/2))"
+      Multiplication.new(Division.new(3,2),Division.new(3,2)).next_step.to_s.should be == "((3*3)/(2*2))"
+      Multiplication.new(Division.new(3,2),Division.new(3,2)).next_step.next_step.to_s.should be == "(9/(2*2))"
+      Multiplication.new(Division.new(3,2),Division.new(3,2)).next_step.next_step.next_step.to_s.should be == "(9/4)"
+      Multiplication.new(Division.new(3,2),Division.new(3,2)).next_step.next_step.next_step.next_step.to_s.should be == "9/4"
+    end
   end
 end

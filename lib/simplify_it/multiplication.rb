@@ -5,13 +5,13 @@ module SimplifyIt
     end
 
     def eval
-      @expressions.reduce(1) { |memo, i| memo * i.eval }
+      @expressions.reduce(1) { |memo, i| memo.mul(i.eval) }
     end
 
     def next_step
       if can_simplify?
         if @expressions.length > 2
-          Multiplication.new(*([@expressions[0].eval * @expressions[1].eval] + @expressions[2..-1]))
+          Multiplication.new(*([@expressions[0].eval.mul(@expressions[1].eval)] + @expressions[2..-1]))
         else
           eval
         end

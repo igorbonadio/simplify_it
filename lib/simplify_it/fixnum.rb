@@ -18,4 +18,8 @@ class Fixnum
   def next_step
     raise Exception.new("It can not be simplified!")
   end
+
+  def mul(num)
+    self * num
+  end
 end
