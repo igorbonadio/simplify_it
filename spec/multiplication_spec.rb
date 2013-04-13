@@ -47,5 +47,13 @@ module SimplifyIt
       Multiplication.new(3,Division.new(3,2)).to_s.should be == "(3*(3/2))"
       Multiplication.new(3,Division.new(3,2)).next_step.to_s.should be == "9/2"
     end
+
+    it "should multiply rationals step by step (2)" do
+      Multiplication.new(Division.new(3,2),3).to_s.should be == "((3/2)*3)"
+      Multiplication.new(Division.new(3,2),3).next_step.to_s.should be == "((3*3)/(2*1))"
+      Multiplication.new(Division.new(3,2),3).next_step.next_step.to_s.should be == "(9/(2*1))"
+      Multiplication.new(Division.new(3,2),3).next_step.next_step.next_step.to_s.should be == "(9/2)"
+      Multiplication.new(Division.new(3,2),3).next_step.next_step.next_step.next_step.to_s.should be == "9/2"
+    end
   end
 end
