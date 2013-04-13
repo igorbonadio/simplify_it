@@ -57,6 +57,26 @@ module SimplifyIt
       Addition.new(1,Multiplication.new(1,2,3,4),3,4).next_step.to_s.should eq "(1+(2*3*4)+3+4)"
     end
 
-    it "should simplify sum of rationals step by step"
+    it "should simplify sum of rationals step by step" do
+      Addition.new(Division.new(1,2),Division.new(1,2),).to_s.should be == "((1/2)+(1/2))"
+      Addition.new(Division.new(1,2),Division.new(1,2),).next_step.to_s.should be == "(1/2+(1/2))"
+      Addition.new(Division.new(1,2),Division.new(1,2),).next_step.next_step.to_s.should be == "(1/2+1/2)"
+      Addition.new(Division.new(1,2),Division.new(1,2),).next_step.next_step.next_step.to_s.should be == "(((1*1)+(1*1))/2)"
+      Addition.new(Division.new(1,2),Division.new(1,2),).next_step.next_step.next_step.next_step.to_s.should be == "((1+(1*1))/2)"
+      Addition.new(Division.new(1,2),Division.new(1,2),).next_step.next_step.next_step.next_step.next_step.to_s.should be == "((1+1)/2)"
+      Addition.new(Division.new(1,2),Division.new(1,2),).next_step.next_step.next_step.next_step.next_step.next_step.to_s.should be == "(2/2)"
+      Addition.new(Division.new(1,2),Division.new(1,2),).next_step.next_step.next_step.next_step.next_step.next_step.next_step.to_s.should be == "1"
+    end
+
+    it "should simplify sum of rationals step by step (2)" do
+      Addition.new(Division.new(1,2),Division.new(1,3),).to_s.should be == "((1/2)+(1/3))"
+      Addition.new(Division.new(1,2),Division.new(1,3),).next_step.to_s.should be == "(1/2+(1/3))"
+      Addition.new(Division.new(1,2),Division.new(1,3),).next_step.next_step.to_s.should be == "(1/2+1/3)"
+      Addition.new(Division.new(1,2),Division.new(1,3),).next_step.next_step.next_step.to_s.should be == "(((1*3)+(1*2))/6)"
+      Addition.new(Division.new(1,2),Division.new(1,3),).next_step.next_step.next_step.next_step.to_s.should be == "((3+(1*2))/6)"
+      Addition.new(Division.new(1,2),Division.new(1,3),).next_step.next_step.next_step.next_step.next_step.to_s.should be == "((3+2)/6)"
+      Addition.new(Division.new(1,2),Division.new(1,3),).next_step.next_step.next_step.next_step.next_step.next_step.to_s.should be == "(5/6)"
+      Addition.new(Division.new(1,2),Division.new(1,3),).next_step.next_step.next_step.next_step.next_step.next_step.next_step.to_s.should be == "5/6"
+    end
   end
 end

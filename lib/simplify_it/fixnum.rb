@@ -22,4 +22,8 @@ class Fixnum
   def mul(num)
     self * num
   end
+
+  def add(num)
+    self + num
+  end
 end

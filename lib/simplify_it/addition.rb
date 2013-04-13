@@ -5,7 +5,7 @@ module SimplifyIt
     end
 
     def eval
-      @expressions.reduce(0) { |memo, i| memo + i.eval }
+      @expressions.reduce(0) { |memo, i| memo.add(i.eval) }
     end
 
     def can_simplify?
@@ -21,7 +21,7 @@ module SimplifyIt
     def next_step
       if can_simplify?
         if @expressions.length > 2
-          Addition.new(*([@expressions[0].eval + @expressions[1].eval] + @expressions[2..-1]))
+          Addition.new(*([@expressions[0].eval.add(@expressions[1].eval)] + @expressions[2..-1]))
         else
           eval
         end

@@ -81,4 +81,31 @@ class Rational
     SimplifyIt::Division.new(SimplifyIt::Multiplication.new(self.numerator, num.numerator), 
                              SimplifyIt::Multiplication.new(self.denominator,num.denominator))
   end
+
+  def add(num)
+    div = mmc(self.denominator,num.denominator)
+    SimplifyIt::Division.new(SimplifyIt::Addition.new((SimplifyIt::Multiplication.new(self.numerator,(div/self.denominator))), 
+                                                      (SimplifyIt::Multiplication.new(num.numerator,(div/num.denominator))), ), 
+                             div)
+  end
+
+  def mmc(a, b)
+    a*(b/mdc(a,b))
+  end
+
+  def mdc(a, b)
+    if b == 0
+      return a
+    else
+      mdc(b, a%b)
+    end
+  end
+
+  def simplified?
+    true
+  end
+
+  def eval
+    self
+  end
 end
