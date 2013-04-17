@@ -1,6 +1,6 @@
 grammar SimplifyLang
   rule additive
-    multitive ( '+' multitive )*
+    multitive ( [+-] multitive )*
   end
 
   rule multitive
