@@ -10,6 +10,7 @@ GEM
       rdoc
     json (1.7.7)
     multi_json (1.7.2)
+    polyglot (0.3.3)
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -25,6 +26,9 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    treetop (1.4.12)
+      polyglot
+      polyglot (>= 0.3.1)
 
 PLATFORMS
   ruby
@@ -35,3 +39,4 @@ DEPENDENCIES
   rdoc (~> 3.12)
   rspec (~> 2.13.0)
   simplecov (>= 0.6.4)
+  treetop
