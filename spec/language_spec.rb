@@ -21,6 +21,7 @@ module SimplifyIt
       lang.parse("(1-2)*(3/4)").should be_true
       lang.parse("((1-2)*3)/4").should be_true
       lang.parse("((1-2)*(3/4))").should be_true
+      lang.parse("((1-2)*(3/(-4)))").should be_true
     end
   end
 end
