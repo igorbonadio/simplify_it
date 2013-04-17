@@ -6,6 +6,11 @@ module SimplifyIt
       lang = Language.new
       lang.parse("10").should be_true
       lang.parse("-3").should be_true
+      lang.parse("1+2").should be_true
+      lang.parse("1+2+3+4").should be_true
+      lang.parse("1*2").should be_true
+      lang.parse("1*2*3*4").should be_true
+      lang.parse("1/2").should be_true
     end
   end
 end
