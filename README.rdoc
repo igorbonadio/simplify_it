@@ -1,6 +1,6 @@
 = simplify_it
 
-Description goes here.
+SimplifyIt is a ruby gem that simplifies numerical expressions.
 
 == Contributing to simplify_it
  
